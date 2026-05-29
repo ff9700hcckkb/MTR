@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>附錄 — 中級泰文閱讀</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.app-tabs{display:flex;overflow-x:auto;background:var(--cream-dark);border-bottom:2px solid var(--border);scrollbar-width:none}
+.app-tabs::-webkit-scrollbar{display:none}
+.app-tab{flex-shrink:0;padding:12px 18px;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.07em;color:var(--ink2);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap;user-select:none}
+.app-tab.active{color:var(--teal);border-bottom-color:var(--teal);font-weight:600}
+.app-tab:hover{color:var(--ink)}
+.app-panel{display:none;animation:fi .22s ease}
+.app-panel.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+/* section title band */
+.app-band{background:var(--teal);color:#fff;border-radius:var(--r);padding:14px 18px;margin:20px 0 14px;display:flex;align-items:center;gap:12px}
+.app-band .ab-label{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.12em;color:var(--gold2);display:block;margin-bottom:3px}
+.app-band h2{font-size:.98rem;font-weight:700}
+/* vocab table */
+.vtable{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 2px 8px var(--shad);margin-bottom:18px;font-size:.82rem}
+.vtable thead tr{background:var(--ink)}
+.vtable th{padding:9px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.06em;color:var(--gold2);font-weight:500}
+.vtable td{padding:10px 10px;border-bottom:1px solid var(--cream-dark);vertical-align:middle}
+.vtable tr:last-child td{border-bottom:none}
+.vtable tr:nth-child(even) td{background:var(--cream)}
+.num-cell{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--gold);width:28px}
+.thai-cell{font-family:'Noto Sans Thai',sans-serif;font-size:1rem;font-weight:600;color:var(--teal)}
+.rom-cell{font-family:'IBM Plex Mono',monospace;font-size:.63rem;color:var(--ink2);line-height:1.4}
+.zh-cell{font-size:.85rem;font-weight:600}
+.pos-cell{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--ink2)}
+/* section label row */
+.vtable .section-row td{background:var(--cream-dark);font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.1em;color:var(--gold);padding:6px 10px;font-weight:600}
+/* conj guide */
+.conj-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:12px;box-shadow:0 1px 5px var(--shad)}
+.conj-card .cthai{font-family:'Noto Sans Thai',sans-serif;font-size:1.1rem;font-weight:700;color:var(--teal);margin-bottom:4px}
+.conj-card .czh{font-size:.88rem;font-weight:600;margin-bottom:8px}
+.conj-card .crom{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ink2);margin-bottom:10px}
+.meta-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.meta-chip{font-family:'IBM Plex Mono',monospace;font-size:.6rem;padding:3px 9px;border-radius:3px;border:1px solid var(--border)}
+.meta-chip.func{background:#E8F5E9;color:var(--ok);border-color:var(--ok)}
+.meta-chip.pos{background:#FFF8E1;color:#7B6000;border-color:#D4A017}
+.meta-chip.place{background:#E3F2FD;color:#1565C0;border-color:#90CAF9}
+.cexample{background:var(--cream);border-left:3px solid var(--teal);padding:9px 12px;border-radius:0 6px 6px 0;font-family:'Noto Sans Thai',sans-serif;font-size:.88rem;line-height:1.85;margin-bottom:6px}
+.cexample .czh-ex{font-family:'Noto Serif TC',serif;font-size:.78rem;color:var(--ink2);display:block;margin-top:3px}
+.cerror-box{background:#FDECEA;border:1px solid #FFCDD2;border-radius:7px;padding:12px 14px;margin-top:12px}
+.cerror-box .ce-title{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ng);margin-bottom:8px;font-weight:600}
+.error-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:6px;font-size:.8rem}
+.error-row:last-child{margin-bottom:0}
+.ex{color:var(--ng);flex:1}
+.ok{color:var(--ok);flex:1}
+/* checklist */
+.cl-lesson{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 5px var(--shad)}
+.cl-lesson h3{font-size:.9rem;font-weight:700;color:var(--teal);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--cream-dark)}
+.cl-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--cream-dark);cursor:pointer;user-select:none}
+.cl-item:last-child{border-bottom:none}
+.cl-item input[type=checkbox]{width:17px;height:17px;accent-color:var(--teal);flex-shrink:0;cursor:pointer}
+.cl-item label{font-size:.83rem;cursor:pointer;flex:1}
+.cl-item.done label{text-decoration:line-through;color:var(--ink2)}
+.cl-summary{background:var(--teal);color:#fff;border-radius:var(--r);padding:14px 18px;text-align:center;margin-top:16px}
+.cl-summary .cs-num{font-family:'IBM Plex Mono',monospace;font-size:1.8rem;font-weight:500;color:var(--gold2)}
+.cl-summary .cs-label{font-size:.76rem;opacity:.7;margin-top:2px}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="nav-back">← 首頁</a>
+  <span class="nav-title">附錄</span>
+  <span style="width:48px"></span>
+</nav>
+
+<div class="hero">
+  <div class="lnum">APPENDIX / 附錄</div>
+  <h1>學習資源</h1>
+  <div class="tsub">詞彙速查 · 連接詞指南 · 進度檢核</div>
+  <div class="tags">
+    <span class="tag">APP. A</span>
+    <span class="tag">APP. B</span>
+    <span class="tag">APP. C</span>
+  </div>
+</div>
+
+<!-- 附錄分頁 tabs -->
+<div class="app-tabs">
+  <div class="app-tab active" data-app="a">A — 30 字詞彙表</div>
+  <div class="app-tab" data-app="b">B — 連接詞指南</div>
+  <div class="app-tab" data-app="c">C — 進度檢核表</div>
+</div>
+
+<div class="wrap">
+
+<!-- ══ APPENDIX A ══ -->
+<div id="app-a" class="app-panel active">
+  <span class="anchor" id="vocab"></span>
+  <div class="app-band">
+    <div>
+      <span class="ab-label">APPENDIX A</span>
+      <h2>30 字核心詞彙速查表</h2>
+    </div>
+  </div>
+
+  <table class="vtable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>泰文</th>
+        <th>Paiboon+</th>
+        <th>詞性</th>
+        <th>中文</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="section-row"><td colspan="5">§1 — คำเชื่อม 連接詞（貫穿 4 回）</td></tr>
+      <tr><td class="num-cell">01</td><td class="thai-cell">ตัวอย่างเช่น</td><td class="rom-cell">dtuua-yàang-chên</td><td class="pos-cell">conj.</td><td>例如</td></tr>
+      <tr><td class="num-cell">02</td><td class="thai-cell">นอกจากนี้</td><td class="rom-cell">nâawk-jàak-níi</td><td class="pos-cell">conj.</td><td>此外</td></tr>
+      <tr><td class="num-cell">03</td><td class="thai-cell">ถัดไป</td><td class="rom-cell">thàt-bpai</td><td class="pos-cell">conj.</td><td>接下來</td></tr>
+      <tr><td class="num-cell">04</td><td class="thai-cell">ที่สำคัญ</td><td class="rom-cell">thîi-sǎm-khan</td><td class="pos-cell">conj.</td><td>重要的是</td></tr>
+      <tr><td class="num-cell">05</td><td class="thai-cell">อย่างไรก็ตาม</td><td class="rom-cell">yàang-rai-gôr-dtaam</td><td class="pos-cell">conj.</td><td>然而</td></tr>
+      <tr><td class="num-cell">06</td><td class="thai-cell">ดังนั้น</td><td class="rom-cell">dang-nán</td><td class="pos-cell">conj.</td><td>因此</td></tr>
+
+      <tr class="section-row"><td colspan="5">§2 — บทที่ 1 街頭小吃</td></tr>
+      <tr><td class="num-cell">07</td><td class="thai-cell">อาหารริมทาง</td><td class="rom-cell">aa-hǎan rim-thaang</td><td class="pos-cell">n.</td><td>街頭小吃</td></tr>
+      <tr><td class="num-cell">08</td><td class="thai-cell">มรดก</td><td class="rom-cell">mâaw-rá-dòk</td><td class="pos-cell">n.</td><td>遺產、文化資產</td></tr>
+      <tr><td class="num-cell">09</td><td class="thai-cell">พ่อค้าแม่ค้า</td><td class="rom-cell">phâaw-kháa mâae-kháa</td><td class="pos-cell">n.</td><td>攤販、商販</td></tr>
+      <tr><td class="num-cell">10</td><td class="thai-cell">สุขอนามัย</td><td class="rom-cell">sùk-khà-aná-mai</td><td class="pos-cell">n.</td><td>衛生</td></tr>
+      <tr><td class="num-cell">11</td><td class="thai-cell">ใบอนุญาต</td><td class="rom-cell">bai-aná-yâat</td><td class="pos-cell">n.</td><td>執照、許可證</td></tr>
+      <tr><td class="num-cell">12</td><td class="thai-cell">ตลาดนัด</td><td class="rom-cell">dtà-làat nát</td><td class="pos-cell">n.</td><td>市集</td></tr>
+
+      <tr class="section-row"><td colspan="5">§3 — บทที่ 2 空污防護</td></tr>
+      <tr><td class="num-cell">13</td><td class="thai-cell">ฝุ่นละออง</td><td class="rom-cell">fùn lá-aawng</td><td class="pos-cell">n.</td><td>粉塵、懸浮顆粒</td></tr>
+      <tr><td class="num-cell">14</td><td class="thai-cell">หน้ากาก</td><td class="rom-cell">nâa-gàak</td><td class="pos-cell">n.</td><td>口罩、面罩</td></tr>
+      <tr><td class="num-cell">15</td><td class="thai-cell">เครื่องฟอกอากาศ</td><td class="rom-cell">khrêuuang fâawk aa-gàat</td><td class="pos-cell">n.</td><td>空氣清淨機</td></tr>
+      <tr><td class="num-cell">16</td><td class="thai-cell">คุณภาพอากาศ</td><td class="rom-cell">khun-ná-phâap aa-gàat</td><td class="pos-cell">n.</td><td>空氣品質</td></tr>
+      <tr><td class="num-cell">17</td><td class="thai-cell">ระบบทางเดินหายใจ</td><td class="rom-cell">rá-bòp thaang-dern hǎai-jai</td><td class="pos-cell">n.</td><td>呼吸系統</td></tr>
+      <tr><td class="num-cell">18</td><td class="thai-cell">แอปพลิเคชัน</td><td class="rom-cell">àep-phlí-khee-chân</td><td class="pos-cell">n.</td><td>應用程式</td></tr>
+
+      <tr class="section-row"><td colspan="5">§4 — บทที่ 3 外送 App</td></tr>
+      <tr><td class="num-cell">19</td><td class="thai-cell">แอปส่งอาหาร</td><td class="rom-cell">àep sòng aa-hǎan</td><td class="pos-cell">n.</td><td>外送 App</td></tr>
+      <tr><td class="num-cell">20</td><td class="thai-cell">ไรเดอร์</td><td class="rom-cell">rai-dêə</td><td class="pos-cell">n.</td><td>外送員</td></tr>
+      <tr><td class="num-cell">21</td><td class="thai-cell">ส่วนแบ่งตลาด</td><td class="rom-cell">sùuan-bàaeng dtà-làat</td><td class="pos-cell">n.</td><td>市佔率</td></tr>
+      <tr><td class="num-cell">22</td><td class="thai-cell">มูลค่าตลาด</td><td class="rom-cell">muun-lá-khâa dtà-làat</td><td class="pos-cell">n.</td><td>市場規模</td></tr>
+      <tr><td class="num-cell">23</td><td class="thai-cell">ผู้เล่นหลัก</td><td class="rom-cell">phûu lên làk</td><td class="pos-cell">n.</td><td>主要業者</td></tr>
+      <tr><td class="num-cell">24</td><td class="thai-cell">บรรจุภัณฑ์</td><td class="rom-cell">ban-jù-phan</td><td class="pos-cell">n.</td><td>包裝、容器</td></tr>
+
+      <tr class="section-row"><td colspan="5">§5 — บทที่ 4 潑水節</td></tr>
+      <tr><td class="num-cell">25</td><td class="thai-cell">เทศกาล</td><td class="rom-cell">thêet-sà-gaan</td><td class="pos-cell">n.</td><td>節日、慶典</td></tr>
+      <tr><td class="num-cell">26</td><td class="thai-cell">ประเพณี</td><td class="rom-cell">bprà-phee-nii</td><td class="pos-cell">n.</td><td>傳統、習俗</td></tr>
+      <tr><td class="num-cell">27</td><td class="thai-cell">รดน้ำ</td><td class="rom-cell">rót-náam</td><td class="pos-cell">v.</td><td>灑水（祝福）</td></tr>
+      <tr><td class="num-cell">28</td><td class="thai-cell">ทำบุญ</td><td class="rom-cell">tham-bun</td><td class="pos-cell">v.</td><td>做功德、布施</td></tr>
+      <tr><td class="num-cell">29</td><td class="thai-cell">ความกตัญญู</td><td class="rom-cell">khwaam gà-dtan-yuu</td><td class="pos-cell">n.</td><td>孝順、感恩</td></tr>
+      <tr><td class="num-cell">30</td><td class="thai-cell">ซอฟต์พาวเวอร์</td><td class="rom-cell">sóft-phaao-wəə</td><td class="pos-cell">n.</td><td>軟實力</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ APPENDIX B ══ -->
+<div id="app-b" class="app-panel">
+  <span class="anchor" id="conj"></span>
+  <div class="app-band">
+    <div>
+      <span class="ab-label">APPENDIX B</span>
+      <h2>6 連接詞使用指南</h2>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <div class="conj-card">
+    <div class="cthai">ตัวอย่างเช่น</div>
+    <div class="crom">dtuua-yàang-chên</div>
+    <div class="czh">例如</div>
+    <div class="meta-row">
+      <span class="meta-chip func">舉例</span>
+      <span class="meta-chip pos">句中 / 句首</span>
+      <span class="meta-chip place">後接名詞片語</span>
+    </div>
+    <div class="cexample">
+      มีอาหารไทยที่อร่อยมาก <strong>ตัวอย่างเช่น</strong> ผัดไทย ส้มตำ และข้าวเหนียวมะม่วง
+      <span class="czh-ex">有很多好吃的泰國料理，<strong>例如</strong>泰式炒河粉、涼拌木瓜和芒果糯米飯。</span>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="conj-card">
+    <div class="cthai">นอกจากนี้</div>
+    <div class="crom">nâawk-jàak-níi</div>
+    <div class="czh">此外</div>
+    <div class="meta-row">
+      <span class="meta-chip func">補充</span>
+      <span class="meta-chip pos">新段落句首</span>
+      <span class="meta-chip place">後接完整子句</span>
+    </div>
+    <div class="cexample">
+      อาหารริมทางราคาถูก <strong>นอกจากนี้</strong> ยังเปิดร้านตั้งแต่เช้าจนดึก
+      <span class="czh-ex">街頭小吃價格便宜，<strong>此外</strong>從清晨營業到深夜。</span>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="conj-card">
+    <div class="cthai">ถัดไป</div>
+    <div class="crom">thàt-bpai</div>
+    <div class="czh">接下來</div>
+    <div class="meta-row">
+      <span class="meta-chip func">順序推進</span>
+      <span class="meta-chip pos">新段落句首</span>
+      <span class="meta-chip place">後接下一論點</span>
+    </div>
+    <div class="cexample">
+      <strong>ถัดไป</strong> มูลค่าตลาดในปี พ.ศ. 2566 อยู่ที่ประมาณ 86,000 ล้านบาท
+      <span class="czh-ex"><strong>接下來</strong>，2023 年的市場規模約達 860 億泰銖。</span>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="conj-card">
+    <div class="cthai">ที่สำคัญ</div>
+    <div class="crom">thîi-sǎm-khan</div>
+    <div class="czh">重要的是</div>
+    <div class="meta-row">
+      <span class="meta-chip func">強調重點</span>
+      <span class="meta-chip pos">子句句首</span>
+      <span class="meta-chip place">後接最重要論點</span>
+    </div>
+    <div class="cexample">
+      <strong>ที่สำคัญ</strong> ต้องเลือกรุ่นเครื่องฟอกอากาศที่เหมาะกับขนาดของห้อง
+      <span class="czh-ex"><strong>重要的是</strong>，要選擇適合房間大小的空氣清淨機型號。</span>
+    </div>
+    <div class="cerror-box">
+      <div class="ce-title">⚠️ 常見錯誤</div>
+      <div class="error-row"><span class="ex">❌ ที่สำคัญ ที่สุด（亂斷）</span><span class="ok">✅ ที่สำคัญที่สุด（固定片語）</span></div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="conj-card">
+    <div class="cthai">อย่างไรก็ตาม</div>
+    <div class="crom">yàang-rai-gôr-dtaam</div>
+    <div class="czh">然而</div>
+    <div class="meta-row">
+      <span class="meta-chip func">轉折</span>
+      <span class="meta-chip pos">新段落句首</span>
+      <span class="meta-chip place">後接反論點或限制</span>
+    </div>
+    <div class="cexample">
+      <strong>อย่างไรก็ตาม</strong> การพึ่งพาเครื่องมือเหล่านี้ยังไม่พอ
+      <span class="czh-ex"><strong>然而</strong>，光靠這些工具還不夠。</span>
+    </div>
+    <div class="cerror-box">
+      <div class="ce-title">⚠️ 常見錯誤</div>
+      <div class="error-row"><span class="ex">❌ อย่างไรก็ตามแต่（雙重轉折）</span><span class="ok">✅ อย่างไรก็ตาม（單一轉折）</span></div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="conj-card">
+    <div class="cthai">ดังนั้น</div>
+    <div class="crom">dang-nán</div>
+    <div class="czh">因此</div>
+    <div class="meta-row">
+      <span class="meta-chip func">因果結論</span>
+      <span class="meta-chip pos">新段落句首</span>
+      <span class="meta-chip place">後接結論（因…所以…）</span>
+    </div>
+    <div class="cexample">
+      ฝุ่น PM 2.5 เป็นอันตราย <strong>ดังนั้น</strong> เราจึงต้องป้องกันตัวเอง
+      <span class="czh-ex">PM 2.5 很危險，<strong>因此</strong>我們必須保護自己。</span>
+    </div>
+    <div class="cerror-box">
+      <div class="ce-title">⚠️ 常見錯誤</div>
+      <div class="error-row"><span class="ex">❌ ดังนั้นจึง…จึง（兩個結果詞）</span><span class="ok">✅ ดังนั้น + 動詞（จึง 選一即可）</span></div>
+    </div>
+  </div>
+
+  <!-- 議論文架構 -->
+  <div style="background:var(--ink);color:#fff;border-radius:var(--r);padding:18px;margin-top:4px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--gold2);letter-spacing:.1em;margin-bottom:12px">議論文 6 段架構（寫作練習參考）</div>
+    <div style="font-size:.83rem;line-height:2.1;">
+      <div>第 1 段 <span style="opacity:.5">—</span> 前言：陳述主題</div>
+      <div>第 2 段 <span style="opacity:.5">—</span> <span style="color:var(--gold2)">ตัวอย่างเช่น</span> + 具體例子</div>
+      <div>第 3 段 <span style="opacity:.5">—</span> <span style="color:var(--gold2)">นอกจากนี้</span> + 補充論點</div>
+      <div>第 4 段 <span style="opacity:.5">—</span> <span style="color:var(--gold2)">ถัดไป</span> + 進一步推理</div>
+      <div>第 5 段 <span style="opacity:.5">—</span> <span style="color:var(--gold2)">ที่สำคัญ</span> + 最重要論點</div>
+      <div>第 6 段 <span style="opacity:.5">—</span> <span style="color:var(--gold2)">อย่างไรก็ตาม</span> 限制 → <span style="color:var(--gold2)">ดังนั้น</span> 最終結論</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ APPENDIX C ══ -->
+<div id="app-c" class="app-panel">
+  <span class="anchor" id="check"></span>
+  <div class="app-band">
+    <div>
+      <span class="ab-label">APPENDIX C</span>
+      <h2>自學進度檢核表</h2>
+    </div>
+  </div>
+
+  <div class="cl-lesson">
+    <h3>🍜 講義 1 — อาหารริมทาง 街頭小吃</h3>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>讀完文章、辨識 ≥ 90% 詞彙</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>12 個詞彙填上意思並造泰文例句</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>閱讀題 ≥ 5 / 6 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>填空題 ≥ 5 / 6 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>聽力題 ≥ 4 / 5 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>兩段口說都嘗試了</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>寫作交給老師批改</label></label>
+  </div>
+
+  <div class="cl-lesson">
+    <h3>😷 講義 2 — PM 2.5 空污防護</h3>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>讀完文章、辨識 ≥ 90% 詞彙</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>12 個詞彙填上意思並造泰文例句</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>閱讀題 ≥ 5 / 6 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>填空題 ≥ 5 / 6 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>聽力題 ≥ 4 / 5 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>兩段口說都嘗試了</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>寫作交給老師批改</label></label>
+  </div>
+
+  <div class="cl-lesson">
+    <h3>📱 講義 3 — แอปส่งอาหาร 外送 App</h3>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>讀完文章、辨識 ≥ 90% 詞彙</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>12 個詞彙填上意思並造泰文例句</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>閱讀題 ≥ 5 / 6 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>填空題 ≥ 5 / 6 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>聽力題 ≥ 4 / 5 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>兩段口說都嘗試了</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>寫作交給老師批改</label></label>
+  </div>
+
+  <div class="cl-lesson">
+    <h3>💦 講義 4 — เทศกาลสงกรานต์ 潑水節</h3>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>讀完文章、辨識 ≥ 90% 詞彙</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>12 個詞彙填上意思並造泰文例句</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>閱讀題 ≥ 5 / 6 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>填空題 ≥ 5 / 6 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>聽力題 ≥ 4 / 5 分</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>兩段口說都嘗試了</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>寫作交給老師批改</label></label>
+  </div>
+
+  <div class="cl-lesson">
+    <h3>🎓 4 回全部完成後</h3>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>30 個核心詞彙各能造 1 句</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>6 個連接詞各能造 1 句</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>完成至少 1 次 CU-TFL 模擬卷</label></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateTotal()"><label>準備好進入 L4 預備班 / 檢定備考精英課程</label></label>
+  </div>
+
+  <div class="cl-summary">
+    <div class="cs-num" id="total-count">0 / 32</div>
+    <div class="cs-label">項目完成數</div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// App tabs
+document.querySelectorAll('.app-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const t = tab.dataset.app;
+    document.querySelectorAll('.app-tab').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.app-panel').forEach(x => x.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('app-' + t).classList.add('active');
+  });
+});
+
+// Checklist toggle styling
+document.querySelectorAll('.cl-item input').forEach(cb => {
+  cb.addEventListener('change', () => {
+    cb.closest('.cl-item').classList.toggle('done', cb.checked);
+  });
+});
+
+// Total counter
+function updateTotal() {
+  const all = document.querySelectorAll('.cl-item input');
+  const done = Array.from(all).filter(c => c.checked).length;
+  document.getElementById('total-count').textContent = done + ' / ' + all.length;
+}
+
+// Handle hash links from index
+window.addEventListener('load', () => {
+  const hash = location.hash.replace('#','');
+  if (hash === 'vocab') {
+    document.querySelector('[data-app="a"]').click();
+  } else if (hash === 'conj') {
+    document.querySelector('[data-app="b"]').click();
+  } else if (hash === 'check') {
+    document.querySelector('[data-app="c"]').click();
+  }
+});
+</script>
+</body>
+</html>
