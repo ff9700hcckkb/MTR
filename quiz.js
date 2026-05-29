@@ -78,6 +78,16 @@ function initFill(cid,answers){
   });
 }
 
+
+// Speak function (Web Speech API, Thai TH)
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(word);
+  u.lang = 'th-TH';
+  u.rate = 0.9;
+  window.speechSynthesis.speak(u);
+}
 // Mobile tooltip for .conj spans
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.conj').forEach(function(el) {
@@ -94,8 +104,20 @@ document.addEventListener('DOMContentLoaded', function() {
       e.stopPropagation();
     });
   });
-  // tap elsewhere to close
+  // vword tooltip (same logic as conj)
+  document.querySelectorAll('.vword').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      var isOn = el.classList.contains('tip-on');
+      document.querySelectorAll('.vword.tip-on,.conj.tip-on').forEach(function(x){ x.classList.remove('tip-on'); });
+      if (!isOn) {
+        el.classList.add('tip-on');
+        setTimeout(function(){ el.classList.remove('tip-on'); }, 2500);
+      }
+      e.stopPropagation();
+    });
+  });
+  // tap elsewhere to close all tips
   document.addEventListener('click', function() {
-    document.querySelectorAll('.conj.tip-on').forEach(function(x){ x.classList.remove('tip-on'); });
+    document.querySelectorAll('.conj.tip-on,.vword.tip-on').forEach(function(x){ x.classList.remove('tip-on'); });
   });
 });
