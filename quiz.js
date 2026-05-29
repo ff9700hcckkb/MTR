@@ -77,3 +77,25 @@ function initFill(cid,answers){
     });
   });
 }
+
+// Mobile tooltip for .conj spans
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.conj').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      // toggle this one
+      var isOn = el.classList.contains('tip-on');
+      // close all others
+      document.querySelectorAll('.conj.tip-on').forEach(function(x){ x.classList.remove('tip-on'); });
+      if (!isOn) {
+        el.classList.add('tip-on');
+        // auto-close after 2.5s
+        setTimeout(function(){ el.classList.remove('tip-on'); }, 2500);
+      }
+      e.stopPropagation();
+    });
+  });
+  // tap elsewhere to close
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.conj.tip-on').forEach(function(x){ x.classList.remove('tip-on'); });
+  });
+});
