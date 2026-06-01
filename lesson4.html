@@ -32,11 +32,40 @@
   <div class="sec-head"><div class="sec-icon">📖</div><div><span class="snum">SECTION 01</span><h2>บทความ — 閱讀文章</h2></div></div>
   <div class="acard">
     <h3>เทศกาลสงกรานต์: ปีใหม่ไทยและมรดกโลก</h3>
+    <div class="reader-bar" id="reader-L4">
+      <div class="rd-mode-toggle">
+        <button class="rd-mode-btn active" id="rd-mode-full-L4" onclick="rdSwitchMode('L4','full')">全文朗讀</button>
+        <button class="rd-mode-btn" id="rd-mode-para-L4" onclick="rdSwitchMode('L4','para')">逐段跟讀</button>
+      </div>
+      <div class="rd-controls" id="rd-full-L4">
+        <button class="rd-btn rd-play" onclick="rdPlay('L4')" title="播放">▶</button>
+        <button class="rd-btn rd-pause" onclick="rdPause('L4')" title="暫停/繼續" disabled>⏸</button>
+        <button class="rd-btn rd-stop" onclick="rdStop()" title="停止" disabled>⏹</button>
+        <div class="rd-speed-wrap">
+          <span class="rd-speed-label">速度</span>
+          <input class="rd-speed" type="range" min="0.5" max="1.5" step="0.1" value="0.85" oninput="rdSetSpeed(this.value,'L4')">
+          <span class="rd-speed-val" id="rd-speed-val-L4">0.85×</span>
+        </div>
+        <span class="rd-status" id="rd-status-L4">就緒</span>
+      </div>
+      <div class="rd-controls" id="rd-para-L4" style="display:none">
+        <button class="rd-btn" onclick="rdParaPrev('L4')" title="上一段">◀</button>
+        <button class="rd-btn rd-play" id="rd-para-play-L4" onclick="rdParaPlay('L4')" title="播放此段">▶</button>
+        <button class="rd-btn" onclick="rdParaNext('L4')" title="下一段">▶▶</button>
+        <button class="rd-btn rd-loop-btn" id="rd-loop-L4" onclick="rdToggleLoop('L4')" title="單段循環">🔁</button>
+        <div class="rd-speed-wrap">
+          <span class="rd-speed-label">速度</span>
+          <input class="rd-speed" type="range" min="0.5" max="1.5" step="0.1" value="0.85" oninput="rdSetSpeed(this.value,'L4')">
+          <span class="rd-speed-val" id="rd-speed-val2-L4">0.85×</span>
+        </div>
+        <span class="rd-status" id="rd-para-status-L4">第 1 / 4 段</span>
+      </div>
+    </div>
     <div class="abody">
-      <p><span class="vword" title="節日">เทศกาล</span>สงกรานต์เป็นเทศกาลปีใหม่ดั้งเดิมของคนไทย ซึ่งจัดขึ้นทุกปีในเดือนเมษายน ในปี พ.ศ. 2569 วันมหาสงกรานต์ตรงกับวันที่ 14 เมษายน <span class="conj" title="因此">ดังนั้น</span> ทั่วประเทศจึงเตรียมจัดงานเฉลิมฉลองในช่วง 13–15 เมษายน</p>
-      <p>ในปี พ.ศ. 2566 องค์การยูเนสโก (UNESCO) ได้ประกาศให้สงกรานต์ในประเทศไทยเป็น "มรดกวัฒนธรรมที่จับต้องไม่ได้ของมนุษยชาติ" ทำให้คนทั่วโลกรู้จักและสนใจมากขึ้น <span class="conj" title="例如">ตัวอย่างเช่น</span> นักท่องเที่ยวต่างชาติเดินทางมาเข้าร่วมงานในกรุงเทพ เชียงใหม่ และพัทยา <span class="conj" title="此外">นอกจากนี้</span> ในปี พ.ศ. 2569 รัฐบาลใช้แนวคิดหลัก "3S: SAFE SOFT SPIRIT" คือ ปลอดภัย <span class="vword" title="軟實力">ซอฟต์พาวเวอร์</span> และจิตวิญญาณ</p>
-      <p><span class="conj" title="接下來">ถัดไป</span> <span class="vword" title="傳統習俗">ประเพณี</span>สำคัญของสงกรานต์มีหลายอย่าง เช่น การ<span class="vword" title="灑水祝福">รดน้ำ</span>ขอพรผู้ใหญ่ การ<span class="vword" title="做功德">ทำบุญ</span>ตักบาตร การเล่นสาดน้ำ และการขนทรายเข้าวัด <span class="conj" title="重要的是">ที่สำคัญ</span> การเล่นน้ำเป็นเพียงส่วนหนึ่ง คุณค่าหลักของสงกรานต์คือ<span class="vword" title="感恩孝順">ความกตัญญู</span>และการอยู่ร่วมกันของครอบครัว</p>
-      <p><span class="conj" title="然而">อย่างไรก็ตาม</span> ในอดีตสงกรานต์เคยมีปัญหา เช่น อุบัติเหตุบนถนนและการดื่มแอลกอฮอล์เกินขนาด ปีนี้รัฐบาลจึงเน้นการเฉลิมฉลองอย่างปลอดภัยและเคารพวัฒนธรรม</p>
+      <p data-para="0"><span class="vword" title="節日">เทศกาล</span>สงกรานต์เป็นเทศกาลปีใหม่ดั้งเดิมของคนไทย ซึ่งจัดขึ้นทุกปีในเดือนเมษายน ในปี พ.ศ. 2569 วันมหาสงกรานต์ตรงกับวันที่ 14 เมษายน <span class="conj" title="因此">ดังนั้น</span> ทั่วประเทศจึงเตรียมจัดงานเฉลิมฉลองในช่วง 13–15 เมษายน</p>
+      <p data-para="1">ในปี พ.ศ. 2566 องค์การยูเนสโก (UNESCO) ได้ประกาศให้สงกรานต์ในประเทศไทยเป็น "มรดกวัฒนธรรมที่จับต้องไม่ได้ของมนุษยชาติ" ทำให้คนทั่วโลกรู้จักและสนใจมากขึ้น <span class="conj" title="例如">ตัวอย่างเช่น</span> นักท่องเที่ยวต่างชาติเดินทางมาเข้าร่วมงานในกรุงเทพ เชียงใหม่ และพัทยา <span class="conj" title="此外">นอกจากนี้</span> ในปี พ.ศ. 2569 รัฐบาลใช้แนวคิดหลัก "3S: SAFE SOFT SPIRIT" คือ ปลอดภัย <span class="vword" title="軟實力">ซอฟต์พาวเวอร์</span> และจิตวิญญาณ</p>
+      <p data-para="2"><span class="conj" title="接下來">ถัดไป</span> <span class="vword" title="傳統習俗">ประเพณี</span>สำคัญของสงกรานต์มีหลายอย่าง เช่น การ<span class="vword" title="灑水祝福">รดน้ำ</span>ขอพรผู้ใหญ่ การ<span class="vword" title="做功德">ทำบุญ</span>ตักบาตร การเล่นสาดน้ำ และการขนทรายเข้าวัด <span class="conj" title="重要的是">ที่สำคัญ</span> การเล่นน้ำเป็นเพียงส่วนหนึ่ง คุณค่าหลักของสงกรานต์คือ<span class="vword" title="感恩孝順">ความกตัญญู</span>และการอยู่ร่วมกันของครอบครัว</p>
+      <p data-para="3"><span class="conj" title="然而">อย่างไรก็ตาม</span> ในอดีตสงกรานต์เคยมีปัญหา เช่น อุบัติเหตุบนถนนและการดื่มแอลกอฮอล์เกินขนาด ปีนี้รัฐบาลจึงเน้นการเฉลิมฉลองอย่างปลอดภัยและเคารพวัฒนธรรม</p>
     </div>
   </div>
   <div class="info">💡 <span style="color:var(--teal);font-weight:600">藍色底線</span> = 連接詞（點擊看意思）　<span style="color:var(--gold);font-weight:600">金色底線</span> = 主題詞（點擊看意思）</div>

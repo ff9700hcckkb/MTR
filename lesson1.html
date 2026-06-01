@@ -32,11 +32,40 @@
   <div class="sec-head"><div class="sec-icon">📖</div><div><span class="snum">SECTION 01</span><h2>บทความ — 閱讀文章</h2></div></div>
   <div class="acard">
     <h3>อาหารริมทางในกรุงเทพ: ความอร่อยและคุณภาพ</h3>
+    <div class="reader-bar" id="reader-L1">
+      <div class="rd-mode-toggle">
+        <button class="rd-mode-btn active" id="rd-mode-full-L1" onclick="rdSwitchMode('L1','full')">全文朗讀</button>
+        <button class="rd-mode-btn" id="rd-mode-para-L1" onclick="rdSwitchMode('L1','para')">逐段跟讀</button>
+      </div>
+      <div class="rd-controls" id="rd-full-L1">
+        <button class="rd-btn rd-play" onclick="rdPlay('L1')" title="播放">▶</button>
+        <button class="rd-btn rd-pause" onclick="rdPause('L1')" title="暫停/繼續" disabled>⏸</button>
+        <button class="rd-btn rd-stop" onclick="rdStop()" title="停止" disabled>⏹</button>
+        <div class="rd-speed-wrap">
+          <span class="rd-speed-label">速度</span>
+          <input class="rd-speed" type="range" min="0.5" max="1.5" step="0.1" value="0.85" oninput="rdSetSpeed(this.value,'L1')">
+          <span class="rd-speed-val" id="rd-speed-val-L1">0.85×</span>
+        </div>
+        <span class="rd-status" id="rd-status-L1">就緒</span>
+      </div>
+      <div class="rd-controls" id="rd-para-L1" style="display:none">
+        <button class="rd-btn" onclick="rdParaPrev('L1')" title="上一段">◀</button>
+        <button class="rd-btn rd-play" id="rd-para-play-L1" onclick="rdParaPlay('L1')" title="播放此段">▶</button>
+        <button class="rd-btn" onclick="rdParaNext('L1')" title="下一段">▶▶</button>
+        <button class="rd-btn rd-loop-btn" id="rd-loop-L1" onclick="rdToggleLoop('L1')" title="單段循環">🔁</button>
+        <div class="rd-speed-wrap">
+          <span class="rd-speed-label">速度</span>
+          <input class="rd-speed" type="range" min="0.5" max="1.5" step="0.1" value="0.85" oninput="rdSetSpeed(this.value,'L1')">
+          <span class="rd-speed-val" id="rd-speed-val2-L1">0.85×</span>
+        </div>
+        <span class="rd-status" id="rd-para-status-L1">第 1 / 4 段</span>
+      </div>
+    </div>
     <div class="abody">
-      <p><span class="vword" title="街頭小吃">อาหารริมทาง</span>เป็นสิ่งที่ทำให้กรุงเทพมีชื่อเสียงไปทั่วโลก ในปี พ.ศ. 2569 บริษัท Travelbag ของอังกฤษจัดให้กรุงเทพอยู่ในอันดับที่ 5 ของเมืองที่นักท่องเที่ยวสายอาหารควรไปเยือนที่สุด <span class="conj" title="因此">ดังนั้น</span> อาหารริมทางจึงเป็น<span class="vword" title="遺產">มรดก</span>ทางวัฒนธรรมที่สำคัญของไทย</p>
-      <p>ในกรุงเทพมีกิจกรรมเกี่ยวกับอาหารมากถึง 406 อย่าง ซึ่งมากที่สุดในบรรดา 10 เมืองยอดนิยมของโลก <span class="conj" title="例如">ตัวอย่างเช่น</span> ผัดไทย ก๋วยเตี๋ยวเรือ ส้มตำ และข้าวเหนียวมะม่วง <span class="vword" title="攤販">พ่อค้าแม่ค้า</span>เปิดร้านตั้งแต่เช้ามืดจนถึงดึก ทำให้คนหาอะไรกินได้ตลอดเวลา <span class="conj" title="此外">นอกจากนี้</span> ราคาก็ยังถูก ทำให้ทั้งคนไทยและคนต่างชาติเข้าถึงได้ง่าย</p>
-      <p><span class="conj" title="接下來">ถัดไป</span> แหล่งอาหารริมทางที่ขึ้นชื่อ ได้แก่ ย่านเยาวราชหรือไชน่าทาวน์ ถนนข้าวสาร และ<span class="vword" title="市集">ตลาดนัด</span>ต่าง ๆ <span class="conj" title="重要的是">ที่สำคัญ</span> ในช่วงไม่กี่ปีที่ผ่านมา รัฐบาลเข้มงวดเรื่อง<span class="vword" title="衛生">สุขอนามัย</span>มากขึ้น มีการจัดระเบียบ<span class="vword" title="許可證">ใบอนุญาต</span> และผลักดันให้ผู้ค้าย้ายเข้าไปขายในตลาดนัดและศูนย์อาหารแทน</p>
-      <p><span class="conj" title="然而">อย่างไรก็ตาม</span> การเปลี่ยนแปลงนี้ทำให้คนกังวลว่าวัฒนธรรมอาหารริมทางจะหายไป จึงต้องหาทางสร้างสมดุลระหว่างความสะดวก ความสะอาด และการรักษาวัฒนธรรมดั้งเดิม</p>
+      <p data-para="0"><span class="vword" title="街頭小吃">อาหารริมทาง</span>เป็นสิ่งที่ทำให้กรุงเทพมีชื่อเสียงไปทั่วโลก ในปี พ.ศ. 2569 บริษัท Travelbag ของอังกฤษจัดให้กรุงเทพอยู่ในอันดับที่ 5 ของเมืองที่นักท่องเที่ยวสายอาหารควรไปเยือนที่สุด <span class="conj" title="因此">ดังนั้น</span> อาหารริมทางจึงเป็น<span class="vword" title="遺產">มรดก</span>ทางวัฒนธรรมที่สำคัญของไทย</p>
+      <p data-para="1">ในกรุงเทพมีกิจกรรมเกี่ยวกับอาหารมากถึง 406 อย่าง ซึ่งมากที่สุดในบรรดา 10 เมืองยอดนิยมของโลก <span class="conj" title="例如">ตัวอย่างเช่น</span> ผัดไทย ก๋วยเตี๋ยวเรือ ส้มตำ และข้าวเหนียวมะม่วง <span class="vword" title="攤販">พ่อค้าแม่ค้า</span>เปิดร้านตั้งแต่เช้ามืดจนถึงดึก ทำให้คนหาอะไรกินได้ตลอดเวลา <span class="conj" title="此外">นอกจากนี้</span> ราคาก็ยังถูก ทำให้ทั้งคนไทยและคนต่างชาติเข้าถึงได้ง่าย</p>
+      <p data-para="2"><span class="conj" title="接下來">ถัดไป</span> แหล่งอาหารริมทางที่ขึ้นชื่อ ได้แก่ ย่านเยาวราชหรือไชน่าทาวน์ ถนนข้าวสาร และ<span class="vword" title="市集">ตลาดนัด</span>ต่าง ๆ <span class="conj" title="重要的是">ที่สำคัญ</span> ในช่วงไม่กี่ปีที่ผ่านมา รัฐบาลเข้มงวดเรื่อง<span class="vword" title="衛生">สุขอนามัย</span>มากขึ้น มีการจัดระเบียบ<span class="vword" title="許可證">ใบอนุญาต</span> และผลักดันให้ผู้ค้าย้ายเข้าไปขายในตลาดนัดและศูนย์อาหารแทน</p>
+      <p data-para="3"><span class="conj" title="然而">อย่างไรก็ตาม</span> การเปลี่ยนแปลงนี้ทำให้คนกังวลว่าวัฒนธรรมอาหารริมทางจะหายไป จึงต้องหาทางสร้างสมดุลระหว่างความสะดวก ความสะอาด และการรักษาวัฒนธรรมดั้งเดิม</p>
     </div>
   </div>
   <div class="info">💡 <strong>提示：</strong>點擊藍色底線連接詞可查看中文意思（電腦版游標停留，手機版點擊）。</div>

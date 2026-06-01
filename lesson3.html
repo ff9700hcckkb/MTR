@@ -32,11 +32,40 @@
   <div class="sec-head"><div class="sec-icon">📖</div><div><span class="snum">SECTION 01</span><h2>บทความ — 閱讀文章</h2></div></div>
   <div class="acard">
     <h3>แอปส่งอาหารในชีวิตประจำวันของคนไทย</h3>
+    <div class="reader-bar" id="reader-L3">
+      <div class="rd-mode-toggle">
+        <button class="rd-mode-btn active" id="rd-mode-full-L3" onclick="rdSwitchMode('L3','full')">全文朗讀</button>
+        <button class="rd-mode-btn" id="rd-mode-para-L3" onclick="rdSwitchMode('L3','para')">逐段跟讀</button>
+      </div>
+      <div class="rd-controls" id="rd-full-L3">
+        <button class="rd-btn rd-play" onclick="rdPlay('L3')" title="播放">▶</button>
+        <button class="rd-btn rd-pause" onclick="rdPause('L3')" title="暫停/繼續" disabled>⏸</button>
+        <button class="rd-btn rd-stop" onclick="rdStop()" title="停止" disabled>⏹</button>
+        <div class="rd-speed-wrap">
+          <span class="rd-speed-label">速度</span>
+          <input class="rd-speed" type="range" min="0.5" max="1.5" step="0.1" value="0.85" oninput="rdSetSpeed(this.value,'L3')">
+          <span class="rd-speed-val" id="rd-speed-val-L3">0.85×</span>
+        </div>
+        <span class="rd-status" id="rd-status-L3">就緒</span>
+      </div>
+      <div class="rd-controls" id="rd-para-L3" style="display:none">
+        <button class="rd-btn" onclick="rdParaPrev('L3')" title="上一段">◀</button>
+        <button class="rd-btn rd-play" id="rd-para-play-L3" onclick="rdParaPlay('L3')" title="播放此段">▶</button>
+        <button class="rd-btn" onclick="rdParaNext('L3')" title="下一段">▶▶</button>
+        <button class="rd-btn rd-loop-btn" id="rd-loop-L3" onclick="rdToggleLoop('L3')" title="單段循環">🔁</button>
+        <div class="rd-speed-wrap">
+          <span class="rd-speed-label">速度</span>
+          <input class="rd-speed" type="range" min="0.5" max="1.5" step="0.1" value="0.85" oninput="rdSetSpeed(this.value,'L3')">
+          <span class="rd-speed-val" id="rd-speed-val2-L3">0.85×</span>
+        </div>
+        <span class="rd-status" id="rd-para-status-L3">第 1 / 4 段</span>
+      </div>
+    </div>
     <div class="abody">
-      <p>ในยุคปัจจุบัน <span class="vword" title="外送App">แอปส่งอาหาร</span>กลายเป็นส่วนหนึ่งของชีวิตประจำวันของคนไทย โดยเฉพาะในกรุงเทพและเมืองใหญ่ ทั้งคนทำงานออฟฟิศ นักเรียน นักศึกษา และผู้สูงอายุต่างใช้แอปสั่งอาหารแทบทุกวัน เพราะสะดวก รวดเร็ว และมีให้เลือกหลากหลาย <span class="conj" title="因此">ดังนั้น</span> ตลาดส่งอาหารจึงเติบโตอย่างต่อเนื่อง</p>
-      <p>ในปี พ.ศ. 2569 ตลาดแอปส่งอาหารในไทยมี<span class="vword" title="主要業者">ผู้เล่นหลัก</span>อยู่ 3 ราย <span class="conj" title="例如">ตัวอย่างเช่น</span> LINE MAN ซึ่งเป็นแอปสัญชาติไทยที่ครอง<span class="vword" title="市佔率">ส่วนแบ่งตลาด</span>อันดับ 1 ที่ร้อยละ 44 รองลงมาคือ Grab จากสิงคโปร์ที่ร้อยละ 40 และ ShopeeFood ที่ร้อยละ 10 <span class="conj" title="此外">นอกจากนี้</span> แอป Foodpanda จากเยอรมนีได้ประกาศยุติการให้บริการในไทยตั้งแต่ปี พ.ศ. 2568 ทำให้การแข่งขันเปลี่ยนไปอย่างมาก</p>
-      <p><span class="conj" title="接下來">ถัดไป</span> <span class="vword" title="市場規模">มูลค่าตลาด</span>ในปี พ.ศ. 2566 อยู่ที่ประมาณ 86,000 ล้านบาท และคาดว่าจะเพิ่มเป็น 240,000 ล้านบาทภายในปี พ.ศ. 2571 ราคาเฉลี่ยต่อคำสั่งซื้ออยู่ที่ 185 บาท <span class="conj" title="重要的是">ที่สำคัญ</span> LINE MAN ครอบคลุมการให้บริการครบทั้ง 77 จังหวัด ทำให้ลูกค้าในต่างจังหวัดเข้าถึงบริการได้ง่ายขึ้น</p>
-      <p><span class="conj" title="然而">อย่างไรก็ตาม</span> การใช้แอปส่งอาหารบ่อยเกินไปก็มีข้อเสีย เช่น ค่าใช้จ่ายสะสมที่สูง <span class="vword" title="外送員">ไรเดอร์</span>ทำงานหนักเกินไป และการเพิ่มขยะจาก<span class="vword" title="包裝容器">บรรจุภัณฑ์</span>พลาสติก ดังนั้นจึงควรใช้บริการอย่างมีวินัย</p>
+      <p data-para="0">ในยุคปัจจุบัน <span class="vword" title="外送App">แอปส่งอาหาร</span>กลายเป็นส่วนหนึ่งของชีวิตประจำวันของคนไทย โดยเฉพาะในกรุงเทพและเมืองใหญ่ ทั้งคนทำงานออฟฟิศ นักเรียน นักศึกษา และผู้สูงอายุต่างใช้แอปสั่งอาหารแทบทุกวัน เพราะสะดวก รวดเร็ว และมีให้เลือกหลากหลาย <span class="conj" title="因此">ดังนั้น</span> ตลาดส่งอาหารจึงเติบโตอย่างต่อเนื่อง</p>
+      <p data-para="1">ในปี พ.ศ. 2569 ตลาดแอปส่งอาหารในไทยมี<span class="vword" title="主要業者">ผู้เล่นหลัก</span>อยู่ 3 ราย <span class="conj" title="例如">ตัวอย่างเช่น</span> LINE MAN ซึ่งเป็นแอปสัญชาติไทยที่ครอง<span class="vword" title="市佔率">ส่วนแบ่งตลาด</span>อันดับ 1 ที่ร้อยละ 44 รองลงมาคือ Grab จากสิงคโปร์ที่ร้อยละ 40 และ ShopeeFood ที่ร้อยละ 10 <span class="conj" title="此外">นอกจากนี้</span> แอป Foodpanda จากเยอรมนีได้ประกาศยุติการให้บริการในไทยตั้งแต่ปี พ.ศ. 2568 ทำให้การแข่งขันเปลี่ยนไปอย่างมาก</p>
+      <p data-para="2"><span class="conj" title="接下來">ถัดไป</span> <span class="vword" title="市場規模">มูลค่าตลาด</span>ในปี พ.ศ. 2566 อยู่ที่ประมาณ 86,000 ล้านบาท และคาดว่าจะเพิ่มเป็น 240,000 ล้านบาทภายในปี พ.ศ. 2571 ราคาเฉลี่ยต่อคำสั่งซื้ออยู่ที่ 185 บาท <span class="conj" title="重要的是">ที่สำคัญ</span> LINE MAN ครอบคลุมการให้บริการครบทั้ง 77 จังหวัด ทำให้ลูกค้าในต่างจังหวัดเข้าถึงบริการได้ง่ายขึ้น</p>
+      <p data-para="3"><span class="conj" title="然而">อย่างไรก็ตาม</span> การใช้แอปส่งอาหารบ่อยเกินไปก็มีข้อเสีย เช่น ค่าใช้จ่ายสะสมที่สูง <span class="vword" title="外送員">ไรเดอร์</span>ทำงานหนักเกินไป และการเพิ่มขยะจาก<span class="vword" title="包裝容器">บรรจุภัณฑ์</span>พลาสติก ดังนั้นจึงควรใช้บริการอย่างมีวินัย</p>
     </div>
   </div>
   <div class="info">💡 <span style="color:var(--teal);font-weight:600">藍色底線</span> = 連接詞（點擊看意思）　<span style="color:var(--gold);font-weight:600">金色底線</span> = 主題詞（點擊看意思）</div>
