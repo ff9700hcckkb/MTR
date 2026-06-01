@@ -1,24 +1,69 @@
-
 // ── BASE64 CONTENT DECODER ──────────────────────────────────
+var _initQueue = [];
+function registerInit(fn) { _initQueue.push(fn); }
+
 function decodeContent() {
-  document.querySelectorAll('[data-c]').forEach(function(el) {
+  var els = Array.from(document.querySelectorAll('[data-c]'));
+  els.forEach(function(el) {
     try {
-      var html = atob(el.getAttribute('data-c'));
-      el.outerHTML = html;
-    } catch(e) {}
-  });
-  // After decode: event delegation for vthai/cc-thai click-to-speak
-  document.querySelectorAll('.vgrid, .conj-compact').forEach(function(container) {
-    container.addEventListener('click', function(e) {
-      var target = e.target.closest('.vthai, .cc-thai');
-      if (target) {
-        var word = target.textContent.trim();
-        if (word) speak(word);
+      var decoded = atob(el.getAttribute('data-c'));
+      var tmp = document.createElement('div');
+      tmp.innerHTML = decoded;
+      var replacement = tmp.firstChild;
+      if (replacement && el.parentNode) {
+        el.parentNode.replaceChild(replacement, el);
       }
-    });
+    } catch(e) { console.warn('decode error', e); }
+  });
+  // Run all registered inits after decode
+  _initQueue.forEach(function(fn){ try{ fn(); }catch(e){ console.warn(e); } });
+  _initQueue = [];
+}
+
+function bindAfterDecode() {
+  document.addEventListener('click', function(e) {
+    var target = e.target.closest('.vthai, .cc-thai, .thai-cell');
+    if (target) {
+      var word = target.textContent.trim();
+      if (word) speak(word);
+    }
   });
 }
-document.addEventListener('DOMContentLoaded', decodeContent);
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    decodeContent();
+    bindAfterDecode();
+  });
+} else {
+  decodeContent();
+  bindAfterDecode();
+}
+
+// Run decode immediately (synchronous, before any tab logic)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    decodeContent();
+    bindAfterDecode();
+  });
+} else {
+  decodeContent();
+  bindAfterDecode();
+}
+
+function bindAfterDecode() {
+  // Event delegation for vthai/cc-thai click-to-speak (document level, survives decode)
+  document.addEventListener('click', function(e) {
+    var target = e.target.closest('.vthai, .cc-thai');
+    if (target) {
+      var word = target.textContent.trim();
+      if (word) speak(word);
+    }
+  });
+}
+
+
+
 function initTabs(){
   document.querySelectorAll('.tab').forEach(tab=>{
     tab.addEventListener('click',()=>{

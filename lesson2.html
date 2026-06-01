@@ -169,6 +169,11 @@
 
 </div>
 <script src="quiz.js"></script>
-<script>initTabs();initQuiz('q2',[1,2,1,0,2,3]);initFill('f2',['ดังนั้น','ตัวอย่างเช่น','นอกจากนี้','ถัดไป','ที่สำคัญ','อย่างไรก็ตาม']);</script>
+<script>
+initTabs();
+registerInit(function(){
+  initQuiz('q2',[1,2,1,0,2,3]);initFill('f2',['ดังนั้น','ตัวอย่างเช่น','นอกจากนี้','ถัดไป','ที่สำคัญ','อย่างไรก็ตาม']);
+});
+</script>
 </body>
 </html>
