@@ -55,7 +55,7 @@ body{background:var(--cream);color:var(--ink);font-family:'Sarabun','Noto Serif 
 .vgrid{display:grid;grid-template-columns:1fr;gap:9px}
 .vcard{background:#fff;border:1px solid var(--border);border-radius:var(--rs);padding:13px 15px;display:grid;grid-template-columns:26px 1fr;gap:0 11px;box-shadow:0 1px 4px var(--shad)}
 .vnum{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--gold);padding-top:2px;font-weight:500}
-.vthai{font-family:'Sarabun',sans-serif;font-size:1.08rem;font-weight:600;color:var(--teal);margin-bottom:1px}
+.vthai{font-family:'Sarabun',sans-serif;font-size:1.08rem;font-weight:600;color:var(--teal);margin-bottom:1px;cursor:pointer;user-select:none}
 .vrom{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink2);margin-bottom:2px}
 .vzh{font-size:1rem;color:var(--ink);font-weight:600}
 .vpos{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.57rem;background:var(--cream-dark);color:var(--ink2);border-radius:3px;padding:1px 5px;margin-left:5px;vertical-align:middle}
@@ -140,7 +140,7 @@ body{background:var(--cream);color:var(--ink);font-family:'Sarabun','Noto Serif 
 .conj-compact{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff;border:1px solid var(--border);border-radius:var(--rs);margin-bottom:7px;box-shadow:0 1px 3px var(--shad)}
 .conj-compact:hover{border-color:var(--teal)}
 .cc-left{display:flex;align-items:center;gap:10px}
-.cc-thai{font-family:'Sarabun',sans-serif;font-size:1.05rem;font-weight:700;color:var(--teal)}
+.cc-thai{font-family:'Sarabun',sans-serif;font-size:1.05rem;font-weight:700;color:var(--teal);cursor:pointer;user-select:none}
 .cc-zh{font-size:.88rem;color:var(--ink2)}
 .cc-right{display:flex;align-items:center;gap:8px}
 .cc-link{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--gold);text-decoration:none;border:1px solid var(--gold);border-radius:3px;padding:2px 6px;white-space:nowrap}
@@ -164,3 +164,5 @@ body{background:var(--cream);color:var(--ink);font-family:'Sarabun','Noto Serif 
 .rd-speed-val{font-family:'IBM Plex Mono',monospace;font-size:.63rem;color:var(--gold2);min-width:34px}
 .rd-status{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:rgba(255,255,255,.4);margin-left:auto;white-space:nowrap}
 .para-active{background:rgba(184,134,11,.18);border-radius:5px;padding:2px 4px;margin:-2px -4px;transition:background .3s}
+
+.vthai:hover,.cc-thai:hover{opacity:.75}

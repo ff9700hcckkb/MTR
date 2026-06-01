@@ -1,3 +1,24 @@
+
+// ── BASE64 CONTENT DECODER ──────────────────────────────────
+function decodeContent() {
+  document.querySelectorAll('[data-c]').forEach(function(el) {
+    try {
+      var html = atob(el.getAttribute('data-c'));
+      el.outerHTML = html;
+    } catch(e) {}
+  });
+  // After decode: event delegation for vthai/cc-thai click-to-speak
+  document.querySelectorAll('.vgrid, .conj-compact').forEach(function(container) {
+    container.addEventListener('click', function(e) {
+      var target = e.target.closest('.vthai, .cc-thai');
+      if (target) {
+        var word = target.textContent.trim();
+        if (word) speak(word);
+      }
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', decodeContent);
 function initTabs(){
   document.querySelectorAll('.tab').forEach(tab=>{
     tab.addEventListener('click',()=>{
