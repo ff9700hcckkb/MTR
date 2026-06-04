@@ -40,6 +40,11 @@ document.querySelectorAll('.app-tab').forEach(function(tab) {
 function initQuiz(cid, answers) {
   var c = document.getElementById(cid);
   if (!c) { console.warn('initQuiz: #' + cid + ' not found'); return; }
+  // Clone buttons to remove old listeners before re-init
+  c.querySelectorAll('.obtn').forEach(function(btn) {
+    var clone = btn.cloneNode(true);
+    btn.parentNode.replaceChild(clone, btn);
+  });
   var score = 0, done = 0, total = answers.length;
   c.querySelectorAll('.qcard').forEach(function(card, qi) {
     var opts = card.querySelectorAll('.obtn');
@@ -72,6 +77,19 @@ function initQuiz(cid, answers) {
   });
 }
 
+
+function resetFill(cid) {
+  var c = document.getElementById(cid); if (!c) return;
+  c.querySelectorAll('.chip').forEach(function(ch) {
+    ch.disabled = false;
+    ch.classList.remove('ck','cn');
+  });
+  c.querySelectorAll('.fanswer').forEach(function(fa) {
+    fa.className = 'fanswer';
+    fa.textContent = '';
+  });
+}
+
 function resetQuiz(cid) {
   var c = document.getElementById(cid); if (!c) return;
   c.querySelectorAll('.obtn').forEach(function(b){ b.disabled = false; b.classList.remove('ok','ng'); });
@@ -84,6 +102,11 @@ function resetQuiz(cid) {
 // ── FILL IN BLANK ─────────────────────────────────────────────
 function initFill(cid, answers) {
   var c = document.getElementById(cid); if (!c) { console.warn('initFill: #' + cid + ' not found'); return; }
+  // Clone chips to remove old listeners
+  c.querySelectorAll('.chip').forEach(function(chip) {
+    var clone = chip.cloneNode(true);
+    chip.parentNode.replaceChild(clone, chip);
+  });
   c.querySelectorAll('.fq').forEach(function(q, qi) {
     var chips = q.querySelectorAll('.chip');
     var fa    = q.querySelector('.fanswer');
