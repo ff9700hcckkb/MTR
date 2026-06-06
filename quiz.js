@@ -137,6 +137,56 @@ function speak(word) {
   window.speechSynthesis.speak(u);
 }
 
+
+// ── TOOLTIP & SPEAK HANDLERS ─────────────────────────────────
+// Single global click listener handles:
+// 1. .conj / .vword  → toggle tip-on (mobile tooltip)
+// 2. .vthai / .cc-thai / .thai-cell → speak the Thai word
+document.addEventListener('click', function(e) {
+  // Tooltip toggle for .conj and .vword
+  var tip = e.target.closest('.conj, .vword');
+  if (tip) {
+    var isOn = tip.classList.contains('tip-on');
+    // Close all open tips
+    document.querySelectorAll('.tip-on').forEach(function(x) {
+      x.classList.remove('tip-on');
+    });
+    if (!isOn) {
+      tip.classList.add('tip-on');
+      // Auto-close after 2.5s
+      setTimeout(function() { tip.classList.remove('tip-on'); }, 2500);
+    }
+    // Also speak the word (from title attribute)
+    var word = tip.getAttribute('title');
+    if (word && word !== '點擊看意思') {
+      // title is the Chinese meaning for conj/vword, not the Thai word
+      // Thai word is the text content (strip child elements)
+      var thai = tip.childNodes[0] && tip.childNodes[0].nodeType === 3
+        ? tip.childNodes[0].textContent.trim()
+        : tip.textContent.trim();
+      if (thai) speak(thai);
+    }
+    e.stopPropagation();
+    return;
+  }
+
+  // Click-to-speak for vocab words
+  var vocab = e.target.closest('.vthai, .cc-thai, .thai-cell');
+  if (vocab) {
+    // Get text content, strip any child elements text except the Thai word
+    var word = (vocab.childNodes[0] && vocab.childNodes[0].nodeType === 3)
+      ? vocab.childNodes[0].textContent.trim()
+      : vocab.textContent.trim();
+    if (word) speak(word);
+    return;
+  }
+
+  // Click elsewhere: close all tips
+  document.querySelectorAll('.tip-on').forEach(function(x) {
+    x.classList.remove('tip-on');
+  });
+});
+
 // ── CHECKLIST ─────────────────────────────────────────────────
 function updateTotal() {
   var all  = document.querySelectorAll('.cl-item input');
